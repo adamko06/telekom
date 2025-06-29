@@ -1,14 +1,28 @@
-const Home = () => {
-  return (
-    <main className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Hello World</h1>
-        <p className="text-gray-600">
-          Telekom E-commerce Project Setup Complete
-        </p>
-      </div>
-    </main>
-  )
+import { getProducts } from '@api'
+import { CACHE_REVALIDATE_TIME } from '@utils'
+import { Suspense } from 'react'
+import ClientPage from './ClientPage'
+
+export const revalidate = CACHE_REVALIDATE_TIME
+
+const ProductList = async () => {
+  const products = await getProducts()
+  return <ClientPage products={products} />
 }
 
-export default Home
+const Loading = () => (
+  <div className="container mx-auto px-4 py-8">
+    <div className="text-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto" />
+      <p className="mt-4 text-muted-foreground">Loading products...</p>
+    </div>
+  </div>
+)
+
+const HomePage = () => (
+  <Suspense fallback={<Loading />}>
+    <ProductList />
+  </Suspense>
+)
+
+export default HomePage
