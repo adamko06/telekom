@@ -3,11 +3,11 @@ import type {
   ProductResponse,
   ProductsResponse,
 } from '@types'
-import { API_BASE_URL, CACHE_REVALIDATE_TIME } from '@utils'
+import { API_BASE_URL } from '@utils'
 
 const fetchAPI = async <T>(endpoint: string): Promise<T> => {
   const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-    next: { revalidate: CACHE_REVALIDATE_TIME },
+    next: { revalidate: 3600 },
   })
 
   if (!response.ok) {

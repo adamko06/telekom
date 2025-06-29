@@ -1,9 +1,8 @@
 import { getProducts } from '@api'
-import { CACHE_REVALIDATE_TIME } from '@utils'
 import { Suspense } from 'react'
 import ClientPage from './ClientPage'
 
-export const revalidate = CACHE_REVALIDATE_TIME
+export const revalidate = 3600
 
 const ProductList = async () => {
   const products = await getProducts()
