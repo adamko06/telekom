@@ -6,11 +6,13 @@ import { useCallback, useEffect, useState } from 'react'
 
 type PriceFilterProps = {
   products: Product[]
+  filteredProducts: Product[]
   onFilteredProductsChange: (filteredProducts: Product[]) => void
 }
 
 const PriceFilter = ({
   products,
+  filteredProducts,
   onFilteredProductsChange,
 }: PriceFilterProps) => {
   const [minPrice, setMinPrice] = useState('')
@@ -47,54 +49,61 @@ const PriceFilter = ({
   }, [handleApplyFilter])
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-lg">Filter by Price</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label htmlFor="min-price" className="text-sm font-medium">
-                Min Price
-              </label>
-              <Input
-                id="min-price"
-                type="number"
-                placeholder="0"
-                value={minPrice}
-                onChange={e => setMinPrice(e.target.value)}
-                min="0"
-                step="0.01"
-              />
+    <div className="lg:sticky lg:top-4">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg">Filter by Price</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label htmlFor="min-price" className="text-sm font-medium">
+                  Min Price
+                </label>
+                <Input
+                  id="min-price"
+                  type="number"
+                  placeholder="0"
+                  value={minPrice}
+                  onChange={e => setMinPrice(e.target.value)}
+                  min="0"
+                  step="0.01"
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="max-price" className="text-sm font-medium">
+                  Max Price
+                </label>
+                <Input
+                  id="max-price"
+                  type="number"
+                  placeholder="1000"
+                  value={maxPrice}
+                  onChange={e => setMaxPrice(e.target.value)}
+                  min="0"
+                  step="0.01"
+                />
+              </div>
             </div>
-            <div className="space-y-2">
-              <label htmlFor="max-price" className="text-sm font-medium">
-                Max Price
-              </label>
-              <Input
-                id="max-price"
-                type="number"
-                placeholder="1000"
-                value={maxPrice}
-                onChange={e => setMaxPrice(e.target.value)}
-                min="0"
-                step="0.01"
-              />
-            </div>
-          </div>
 
-          <div className="flex gap-2">
-            <Button onClick={handleApplyFilter} className="flex-1">
-              Apply Filter
-            </Button>
-            <Button variant="outline" onClick={handleReset}>
-              Reset
-            </Button>
+            <div className="flex gap-2">
+              <Button onClick={handleApplyFilter} className="flex-1">
+                Apply Filter
+              </Button>
+              <Button variant="outline" onClick={handleReset}>
+                Reset
+              </Button>
+            </div>
           </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+      <div className="mt-4">
+        <p className="text-sm text-muted-foreground">
+          Showing {filteredProducts.length} of {products.length} products
+        </p>
+      </div>
+    </div>
   )
 }
 

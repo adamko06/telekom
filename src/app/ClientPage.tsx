@@ -22,13 +22,9 @@ const ClientPage = ({ products }: ClientPageProps) => {
         <div className="w-full lg:w-1/4">
           <PriceFilter
             products={products}
+            filteredProducts={filteredProducts}
             onFilteredProductsChange={setFilteredProducts}
           />
-          <div className="mt-4">
-            <p className="text-sm text-muted-foreground">
-              Showing {filteredProducts.length} of {products.length} products
-            </p>
-          </div>
         </div>
         <div className="w-full lg:w-3/4">
           <ProductGrid products={filteredProducts} />
