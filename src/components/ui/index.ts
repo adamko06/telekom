@@ -9,3 +9,4 @@ export {
   CardTitle,
 } from './card'
 export { Input } from './input'
+export { Skeleton } from './skeleton'

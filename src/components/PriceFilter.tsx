@@ -88,6 +88,7 @@ const PriceFilter = ({
             </div>
 
             <div className="flex gap-2">
+              {/* TODO: remove apply filter button */}
               <Button onClick={handleApplyFilter} className="flex-1">
                 Apply Filter
               </Button>

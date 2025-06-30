@@ -1,4 +1,5 @@
 import { getProducts } from '@api'
+import { ProductCatalogSkeleton } from '@components'
 import { Suspense } from 'react'
 import ClientPage from './ClientPage'
 
@@ -9,14 +10,7 @@ const ProductList = async () => {
   return <ClientPage products={products} />
 }
 
-const Loading = () => (
-  <div className="container mx-auto px-4 py-8">
-    <div className="text-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto" />
-      <p className="mt-4 text-muted-foreground">Loading products...</p>
-    </div>
-  </div>
-)
+const Loading = () => <ProductCatalogSkeleton />
 
 const HomePage = () => (
   <Suspense fallback={<Loading />}>
