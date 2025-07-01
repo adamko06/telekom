@@ -86,4 +86,7 @@ coverage/
 .vscode-test
 
 # pnpm
-.pnpm-store/ 
+.pnpm-store/
+
+# Ignore test results
+test-results/ 
