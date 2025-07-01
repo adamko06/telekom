@@ -4,11 +4,12 @@
   "description": "Telekom E-commerce Technical Assignment",
   "main": "index.js",
   "scripts": {
+    "prebuild": "vitest run",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "generate:api": "openapi-typescript https://fakestoreapi.com/fakestoreapi.json -o src/types/generated.ts"
   },
   "keywords": [
