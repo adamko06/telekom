@@ -33,6 +33,9 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1
     devDependencies:
+      '@playwright/test':
+        specifier: ^1.53.2
+        version: 1.53.2
       '@tailwindcss/line-clamp':
         specifier: ^0.4.4
         version: 0.4.4(tailwindcss@4.1.11)
@@ -93,6 +96,9 @@ importers:
       openapi-typescript:
         specifier: ^7.8.0
         version: 7.8.0(typescript@5.8.3)
+      playwright:
+        specifier: ^1.53.2
+        version: 1.53.2
       postcss:
         specifier: ^8.5.6
         version: 8.5.6
@@ -3187,7 +3193,6 @@ snapshots:
   '@playwright/test@1.53.2':
     dependencies:
       playwright: 1.53.2
-    optional: true
 
   '@polka/url@1.0.0-next.29': {}
 
@@ -4970,15 +4975,13 @@ snapshots:
 
   picomatch@4.0.2: {}
 
-  playwright-core@1.53.2:
-    optional: true
+  playwright-core@1.53.2: {}
 
   playwright@1.53.2:
     dependencies:
       playwright-core: 1.53.2
     optionalDependencies:
       fsevents: 2.3.2
-    optional: true
 
   pluralize@8.0.0: {}
 

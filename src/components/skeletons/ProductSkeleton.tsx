@@ -1,7 +1,7 @@
 import { Card, CardContent, CardFooter, CardHeader, Skeleton } from '@ui'
 
 const ProductSkeleton = () => (
-  <Card className="flex flex-col h-full">
+  <Card className="flex flex-col h-full" data-testid="product-skeleton">
     <CardHeader className="p-4 pb-2">
       <Skeleton className="w-full aspect-[4/3] rounded-lg" />
     </CardHeader>
