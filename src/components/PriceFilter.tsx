@@ -2,6 +2,7 @@
 
 import type { Product } from '@types'
 import { Button, Card, CardContent, CardHeader, CardTitle, Input } from '@ui'
+import { filterProductsByPrice } from '@utils'
 import { useCallback, useEffect, useState } from 'react'
 
 type PriceFilterProps = {
@@ -19,22 +20,23 @@ const PriceFilter = ({
   const [maxPrice, setMaxPrice] = useState('')
 
   const handleApplyFilter = useCallback(() => {
-    let filtered = products
+    const filters: { minPrice?: number; maxPrice?: number } = {}
 
     if (minPrice) {
       const min = parseFloat(minPrice)
       if (!isNaN(min)) {
-        filtered = filtered.filter(product => (product.price || 0) >= min)
+        filters.minPrice = min
       }
     }
 
     if (maxPrice) {
       const max = parseFloat(maxPrice)
       if (!isNaN(max)) {
-        filtered = filtered.filter(product => (product.price || 0) <= max)
+        filters.maxPrice = max
       }
     }
 
+    const filtered = filterProductsByPrice(products, filters)
     onFilteredProductsChange(filtered)
   }, [minPrice, maxPrice, products, onFilteredProductsChange])
 
