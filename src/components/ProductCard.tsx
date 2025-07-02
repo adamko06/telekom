@@ -10,15 +10,17 @@ type ProductCardProps = {
 const ProductCard = ({ product }: ProductCardProps) => (
   <Card className="flex flex-col h-full">
     <CardHeader className="p-4 pb-2">
-      <div className="relative w-full aspect-[4/3] bg-white rounded-lg overflow-hidden">
-        <Image
-          src={product.image || '/placeholder-image.jpg'}
-          alt={product.title || 'Product'}
-          fill
-          className="object-contain"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </div>
+      <Link href={`/product/${product.id}`}>
+        <div className="relative w-full aspect-[4/3] bg-white rounded-lg overflow-hidden cursor-pointer">
+          <Image
+            src={product.image || '/placeholder-image.jpg'}
+            alt={product.title || 'Product'}
+            fill
+            className="object-contain"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
+      </Link>
     </CardHeader>
     <CardContent className="flex-1 p-4 pt-2 flex flex-col">
       <Badge variant="secondary" className="text-xs mb-2">
@@ -36,7 +38,7 @@ const ProductCard = ({ product }: ProductCardProps) => (
         ${product.price ? product.price.toFixed(2) : '0.00'}
       </span>
       <Link
-        href={`/product/${product.id || 'unknown'}`}
+        href={`/product/${product.id}`}
         className="w-full text-center bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium transition-colors"
       >
         View Details
